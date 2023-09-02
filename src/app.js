@@ -1,5 +1,6 @@
 let apiKey = "d9838tb6c0b5af99683b9fo2a4b11ac7";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=Cardiff&key=${apiKey}&units=metric`;
+let city = "Cardiff";
+let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
 console.log(apiUrl);
 
