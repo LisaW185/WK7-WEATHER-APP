@@ -9,6 +9,7 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
     <title>Weather App</title>
   </head>
@@ -17,10 +18,10 @@
       <div class="weather-app-wrap">
         <div class="weather-app">
           <div class="overview">
-            <h1>Cardiff</h1>
+            <h1 id="city">Cardiff</h1>
             <ul>
               <li>Sunday 28th August 2023 15:50</li>
-              <li>Cloudy</li>
+              <li id="description">Cloudy</li>
             </ul>
           </div>
           <div class="row">
@@ -32,16 +33,15 @@
                   class="d-flex justify-content-end"
                 />
                 <div class="d-flex justify-content-end">
-                  <strong>16</strong>
+                  <strong id="temperature">16</strong>
                   <span class="units">°C | <a href="#">°F</a></span>
                 </div>
               </div>
             </div>
             <div class="col-6">
               <ul>
-                <li>Precipitation: 2%</li>
-                <li>Humidity: 72%</li>
-                <li>Wind: 6 mph</li>
+                <li>Humidity: <span id="humidity"></span>%</li>
+                <li>Wind: <span id="wind"></span> mph</li>
               </ul>
             </div>
           </div>
