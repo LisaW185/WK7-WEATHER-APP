@@ -1,7 +1,3 @@
-let apiKey = "d9838tb6c0b5af99683b9fo2a4b11ac7";
-let city = "Cardiff";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let days = [
@@ -45,4 +41,18 @@ function displayTemperature(response) {
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = Math.round(response.data.wind.speed);
 }
-axios.get(apiUrl).then(displayTemperature);
+
+function search(city) {
+  let apiKey = "d9838tb6c0b5af99683b9fo2a4b11ac7";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
+search("Cardiff");
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
