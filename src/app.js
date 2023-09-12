@@ -21,6 +21,12 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function getForecast(coordinates) {
+  let apiKey = "d9838tb6c0b5af99683b9fo2a4b11ac7";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displayTemperature(response) {
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.city;
@@ -42,6 +48,8 @@ function displayTemperature(response) {
   windElement.innerHTML = Math.round(response.data.wind.speed);
 
   celsiusTemperature = response.data.temperature.current;
+
+  getForecast(response.data.coordinates);
 }
 
 function search(city) {
@@ -71,7 +79,8 @@ function displayCelsiusTemperature(event) {
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
@@ -112,4 +121,3 @@ celsiusLink.addEventListener("click", displayCelsiusTemperature);
 let celsiusTemperature = null;
 
 search("Cardiff");
-displayForecast();
